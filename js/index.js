@@ -10,7 +10,11 @@ let cycle = startCycle();
 let logo = document.querySelector('.logo-heading');
 logo.style.cursor = 'pointer';
 logo.addEventListener('click', event => {
-    event.target.animate({color: cycle()}, {duration: 1000, easing: 'linear', fill: 'forwards'});
+    event.target.animate({color: cycle()}, {
+        duration: 1000,
+        easing: 'linear',
+        fill: 'forwards'
+    });
 });
 
 // Stop nav buttons from updating url
@@ -36,7 +40,10 @@ navLinks.forEach(el => {
 
 // Make the words 'Fun Bus' in the intro spin! Fun!
 document.querySelector('.intro h2 span').addEventListener('mouseover', event => {
-    event.target.animate([{transform: 'rotate(360deg)'}], {duration: 500, easing: 'ease-in-out'});
+    event.target.animate([{transform: 'rotate(360deg)'}], {
+        duration: 500,
+        easing: 'ease-in-out'
+    });
 });
 
 // Make the heading of the different sections spin! Quirky!
@@ -48,3 +55,55 @@ document.querySelector('.text-content h2').addEventListener('click', event => {
         {transform: 'scale(1)'}
     ], 1000);
 });
+
+document.querySelectorAll('.content-section img').forEach(el => {
+    el.addEventListener('mouseover', event => {
+        event.target.animate([{
+            filter: 'drop-shadow(10px 10px 10px rgb(120,120,120))',
+            transform: 'scale(1.05)'
+        }], {
+            duration: 250,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+    });
+    el.addEventListener('mouseout', event => {
+        event.target.animate([{
+            filter: 'none',
+            transform: 'scale(1)'
+        }], {
+            duration: 250,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+    })
+});
+
+document.querySelectorAll('.destination').forEach(el => {
+    el.style['border-radius'] = '15px';
+    el.style.transition = 'border 0.25s';
+    el.style.padding = '5px';
+    el.addEventListener('mouseenter', event => {
+        event.target.style.border = '1px solid rgb(200, 200, 0)'
+        event.target.animate([{
+            filter: 'drop-shadow(10px 10px 10px rgb(120,120,120))',
+            transform: 'scale(1.05)'
+        }], {
+            duration: 250,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+        });
+    el.addEventListener('mouseleave', event => {
+        event.target.style.border = 'none';
+        event.target.animate([{
+            filter: 'none)',
+            transform: 'scale(1)'
+        }], {
+            duration: 250,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+    });
+});
+    
